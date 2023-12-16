@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Transfer Money</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Transfer Money</h1>
+        <form action="transfer_money.php" method="post">
+            <label for="from">Transfer From:</label>
+            <select name="from" id="from" required>
+            </select>
+            <br><br>
+            <label for="to">Transfer To:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <select name="to" id="to" required>
+            </select>
+            <br><br>
+            <label for="amount">Amount:</label>&nbsp;&nbsp;
+            <input type="number" name="amount" id="amount" min="1" step="1" required placeholder="Enter Amount">
+            <br><br>
+            <button type="submit">Transfer</button>
+            <button onclick="location.href='index.html'">Back to Home</button>
+        </form>
+    </div>
+
+    <script>
+        function populateDropdowns() {
+            var fromDropdown = document.getElementById("from");
+            var toDropdown = document.getElementById("to");
+            var customers = [
+    { id:0, name: "Select Name"},
+    { id: 1, name: "Aditya Deshmukh"},
+    { id: 2, name: "Neha Joshi"},
+    { id: 3, name: "Aryan Patil"},
+    { id: 4, name: "Ananya Gaikwad"},
+    { id: 5, name: "Rohan Pawar"},
+    { id: 6, name: "Shreya More"},
+    { id: 7, name: "Siddharth Kulkarni"},
+    { id: 8, name: "Trisha Ghadge"},
+    { id: 9, name: "Harshada Mane"},
+    { id: 10, name: "Kunal Khedekar"}
+];
+
+            customers.forEach(function (customer) {
+                var fromOption = document.createElement("option");
+                fromOption.value = customer.id;
+                fromOption.text = customer.name;
+                fromDropdown.add(fromOption);
+
+                var toOption = document.createElement("option");
+                toOption.value = customer.id;
+                toOption.text = customer.name;
+                toDropdown.add(toOption);
+            });
+        }
+
+        window.onload = populateDropdowns;
+    </script>
+</body>
+</html>
